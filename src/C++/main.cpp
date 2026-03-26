@@ -73,6 +73,17 @@ PYBIND11_MODULE(_core, m) {
         X. `ackley` accepts a matrix of size M-by-N and returns a vetor SCORES
         of size M-by-1 in which each row contains the function value for each row
         of X.
+        Properties:
+        - Global minimum: 0
+        - Location of global minimum: (0, 0, ..., 0)
+        - Number of dimensions: N
+        - Recommended domain: [-35, 35]^N
+        - Number of local minima: many
+        - Number of global minima: 1
+        - Convexity: non-convex
+        - Separability: non-separable
+        - Modality: multimodal
+        - Symmetry: radial symmetry
         For more information, please visit:
         benchmarkfcns.info/doc/ackleyfcn
     )pbdoc");
@@ -83,6 +94,17 @@ PYBIND11_MODULE(_core, m) {
         function at point X. `ackley2` accepts a matrix of size M-by-2 and
         returns a vetor SCORES of size M-by-1 in which each row contains the
         function value for the corresponding row of X.
+        Properties:
+        - Global minimum: -200
+        - Location of global minimum: (0, 0, ..., 0)
+        - Number of dimensions: 2
+        - Recommended domain: [-32, 32]^2
+        - Number of local minima: many
+        - Number of global minima: 1
+        - Convexity: non-convex
+        - Separability: non-separable
+        - Modality: unimodal
+        - Symmetry: radial symmetry
         For more information, please visit:
         benchmarkfcns.info/doc/ackleyn2fcn
     )pbdoc");
@@ -161,8 +183,126 @@ PYBIND11_MODULE(_core, m) {
         point X. `beale` accepts a matrix of size M-by-2 and returns a
         vetor SCORES of size M-by-1 in which each row contains the function value
         for the corresponding row of X.
+        Properties:
+        - Global minimum: 0
+        - Location of global minimum: (3, 0.5)
+        - Number of dimensions: 2
+        - Recommended domain: [-4.5, 4.5]^2
+        - Number of local minima: One global minimum in the standard domain, but it features several very flat regions that act like "pseudo-local minima" where gradients become nearly zero.
+        - Number of global minima: 1
+        - Convexity: Non-convex
+        - Separability: Non-separable. The x and y variables are heavily multiplied and nested within the terms.
+        - Modality: Unimodal (within its standard range), but deceptively difficult due to its geometry.
+        - Symmetry: Non-symmetric
+        - Differentiable: Yes
         For more information, please visit:
         benchmarkfcns.info/doc/bealefcn
+    )pbdoc");
+
+    m.def("biggsexp02", &biggsexp02, R"pbdoc(
+        Computes the value of the Biggs EXP N. 02 benchmark function.
+        SCORES = biggsexp02(X) computes the value of the Biggs EXP N. 02
+        function at point X. `biggsexp02` accepts a matrix of size M-by-2 and
+        returns a vetor SCORES of size M-by-1 in which each row contains the
+        function value for the corresponding row of X.
+        Properties:
+        - Global minimum: 0
+        - Location of global minimum: (1, 10)
+        - Number of dimensions: 2
+        - Recommended domain: [0, 20]^2
+        - Number of local minima: 0
+        - Number of global minima: 1
+        - Convexity: non-convex
+        - Separability: non-separable
+        - Modality: unimodal
+        - Symmetry: non-symmetric
+    )pbdoc");
+
+    m.def("biggsexp03", &biggsexp03, R"pbdoc(
+        Computes the value of the Biggs EXP N. 03 benchmark function.
+        SCORES = biggsexp03(X) computes the value of the Biggs EXP N. 03
+        function at point X. `biggsexp03` accepts a matrix of size M-by-3 and
+        returns a vetor SCORES of size M-by-1 in which each row contains the
+        function value for the corresponding row of X.
+        Properties:
+        - Global minimum: 0
+        - Location of global minimum: (1, 10, 1)
+        - Number of dimensions: 3
+        - Recommended domain: [0, 20]^3
+        - Number of local minima: 0
+        - Number of global minima: 1
+        - Convexity: non-convex
+        - Separability: non-separable
+        - Modality: unimodal in the standard domain, but can be multimodal in larger
+        domains
+        - Symmetry: non-symmetric
+        - Differentiable: yes
+    )pbdoc");
+
+    m.def("biggsexp04", &biggsexp04, R"pbdoc(
+        Computes the value of the Biggs EXP N. 04 benchmark function.
+        SCORES = biggsexp04(X) computes the value of the Biggs EXP N. 04
+        function at point X. `biggsexp04` accepts a matrix of size M-by-4 and
+        returns a vetor SCORES of size M-by-1 in which each row contains the
+        function value for the corresponding row of X.
+        Properties:
+        - Global minimum: 0
+        - Location of global minimum: (1, 10, 1, 5)
+        - Number of dimensions: 4
+        - Recommended domain: [0, 20]^4
+        - Number of local minima: 0
+        - Number of global minima: 1
+        - Convexity: non-convex
+        - Separability: non-separable
+        - Modality: unimodal
+        - Symmetry: non-symmetric
+        - Differentiable: yes
+        For more information, please visit:
+        benchmarkfcns.info/doc/biggsexp04fcn
+    )pbdoc");
+
+    m.def("biggsexp05", &biggsexp05, R"pbdoc(
+        Computes the value of the Biggs EXP N. 05 benchmark function.
+        SCORES = biggsexp05(X) computes the value of the Biggs EXP N. 05
+        function at point X. `biggsexp05` accepts a matrix of size M-by-5 and
+        returns a vetor SCORES of size M-by-1 in which each row contains the
+        function value for the corresponding row of X.
+        Properties:
+        - Global minimum: 0
+        - Location of global minimum: (1, 10, 1, 5, 4)
+        - Number of dimensions: 5
+        - Recommended domain: [0, 20]^5
+        - Number of local minima: 0
+        - Number of global minima: 1
+        - Convexity: non-convex
+        - Separability: non-separable
+        - Modality: unimodal
+        - Symmetry: non-symmetric
+        - Differentiable: yes
+        For more information, please visit:
+        benchmarkfcns.info/doc/biggsexp05fcn
+    )pbdoc");
+
+    m.def("biggsexp06", &biggsexp06, R"pbdoc(
+        Computes the value of the Biggs EXP N. 06 benchmark function.
+        SCORES = biggsexp06(X) computes the value of the Biggs EXP N. 06
+        function at point X. `biggsexp06` accepts a matrix of size M-by-6 and
+        returns a vetor SCORES of size M-by-1 in which each row contains the
+        function value for the corresponding row of X.
+        Properties:
+        - Global minimum: 0
+        - Location of global minimum: (1, 10, 1, 5, 4, 3)
+        - Number of dimensions: 6
+        - Recommended domain: [0, 20]^6
+        - Number of local minima: 0
+        - Number of global minima: 1
+        - Convexity: non-convex
+        - Separability: non-separable
+        - Modality: unimodal
+        - Symmetry: non-symmetric
+        - Differentiable: yes
+        For more information, please visit:
+        benchmarkfcns.info/doc/biggsexp06fcn
     )pbdoc");
 
     m.def("bird", &bird, R"pbdoc(
@@ -423,16 +563,136 @@ PYBIND11_MODULE(_core, m) {
         point X. `forrester` accepts a matrix of size M-by-N and returns a vetor
         SCORES of size M-by-1 in which each row contains the
         function value for the corresponding row of X.
+        Properties:
+        - Global Minimum: \approx -6.021
+        - Location of Global Minimum: \approx 0.757
+        - Local Minimum: \approx 0.051 (a much shallower dip)
+        - Recommended Domain: [0, 1]
+        - Dimensions: 1
+        - Convexity: Non-convex (it has a distinct "hump" and a deep valley)
+        - Modality: Multimodal (one global and one local minimum)
+        - Differentiability: Infinitely differentiable (it is smooth everywhere)
         For more information, please visit:
         benchmarkfcns.info/doc/forresterfcn
     )pbdoc");
 
+    m.def("friedman1", &friedman1, py::arg("x"), py::arg("rnd") = false, R"pbdoc(
+        Computes the value of the Friedman N. 1 benchmark function.
+
+        Properties:
+        - Global minimum: In the domain [0, 1], the minimum is approximately 0.3954
+        - Location of global minimum: x_1 * x_2 \approx 0, x_3 = 0.5, x_4 = 0, and x_5 = 0.
+        - Number of dimensions: 10 (though only 5 are active)
+        - Recommended domain: [0, 1]^10
+        - Number of local minima: Several, due to the sin term
+        - Number of global minima: At least 1 within the [0, 1] unit hypercube
+        - Convexity: Non-convex
+        - Separability: Non-separable
+        - Modality: Multimodal
+        - Symmetry: Symmetric for x_1 and x_2
+        - Differentiable: Yes
+
+        Inputs:
+        - x: A matrix of size M-by-10.
+        - rnd: An optional boolean flag that, if true, adds a small random noise to the
+               function value to create a noisy version of the function. Default is false.
+
+        For more information, please visit:
+        benchmarkfcns.info/doc/friedman1fcn
+    )pbdoc");
+
+    m.def("friedman2", &friedman2, py::arg("x"), py::arg("sigma") = 0, R"pbdoc(
+        Computes the value of the Friedman N. 2 benchmark function.
+
+        Properties:
+        - Global minimum: 0
+        - Location of global minimum: (x_1, x_2, x_3, x_4) such that x_1 = 0 and (x_2 x_3) = 1/(x_2 * x_4)
+        - Number of dimensions: 4
+        - Recommended domain: x_1 \in [0, 100], x_2 \in [40 * Pi, 560 * Pi], x_3 \in [0, 1], x_4 \in [1, 11]
+        - Number of local minima: None (it is technically a "valley" function)
+        - Number of global minima: Infinite points
+        - Convexity: Non-convex
+        - Separability: Non-separable
+        - Modality: Unimodal
+        - Symmetry: Non-symmetric
+        - Differentiable: Yes
+
+        Inputs:
+        - x: A matrix of size M-by-4.
+        - sigma: An optional non-negative scalar that adds Gaussian noise with mean of
+                 zero and standard deviation of sigma to the function value to create a
+                 noisy version of the function. Default is 0 (no noise).
+
+        For more information, please visit:
+        benchmarkfcns.info/doc/friedman2fcn
+    )pbdoc");
+
+     m.def("friedman3", &friedman3, py::arg("x"), py::arg("sigma") = 0, R"pbdoc(
+        Computes the value of the Friedman N. 3 benchmark function.
+
+        Properties:
+        - Global minimum: -Pi/2
+        - Location of global minimum: (x_1, x_2, x_3, x_4) such that x_1 is very small and (x_2 * x_3) = 1/(x_2 * x_4)
+        - Number of dimensions: 4
+        - Recommended domain: x_1 \in [0, 100], x_2 \in [40 * Pi, 560 * Pi], x_3 \in [0, 1], x_4 \in [1, 11]
+        - Number of local minima: None (it is technically a "valley" function)
+        - Number of global minima: Infinite points
+        - Convexity: Non-convex
+        - Separability: Non-separable
+        - Modality: Unimodal
+        - Symmetry: Non-symmetric
+        - Differentiable: Yes, except at x_1 = 0
+
+        Inputs:
+        - x: A matrix of size M-by-4.
+        - sigma: An optional non-negative scalar that adds Gaussian noise with mean of
+                 zero and standard deviation of sigma to the function value to create a
+                 noisy version of the function. Default is 0 (no noise).
+
+        For more information, please visit:
+        benchmarkfcns.info/doc/friedman3fcn
+    )pbdoc");
+
+    m.def("gear", &gear, R"pbdoc(
+        Computes the value of the Gear benchmark function.
+        SCORES = gear(X) computes the value of the Gear function at point X.
+        `gear` accepts a matrix of size M-by-4 and returns a vetor SCORES of
+        size M-by-1 in which each row contains the function value for the
+        corresponding row of X.
+        Properties:
+        - Global minimum: \approx 2.700857 * 10^-12
+        - Location of global minimum: (16, 19, 43, 49)
+        - Number of dimensions: 4
+        - Recommended domain: [12, 60]^4
+        - Number of local minima: many
+        - Number of global minima: at least two
+        - Convexity: non-convex
+        - Separability: non-separable
+        - Modality: multimodal
+        - Symmetry: partially symmetric.
+        - Differentiable: no
+        For more information, please visit:
+        benchmarkfcns.info/doc/gearfcn
+    )pbdoc");
+
     m.def("giunta", &giunta, R"pbdoc(
         Computes the value of the Giunta function.
-        SCORES = giunta(X) computes the value of the Alpine N. 1
+        SCORES = giunta(X) computes the value of the Giunta
         function at point X. `giunta` accepts a matrix of size M-by-N and
         returns a vetor SCORES of size M-by-1 in which each row contains the
         function value for the corresponding row of X.
+        Properties:
+        - Global Minimum: \approx 0.06447 (for n=2)
+        - Location of Global Minimum: \approx 0.46732
+        - Number of Dimensions: Usually 2, but can be scaled to n dimensions
+        - Recommended Domain: [-1, 1]^n
+        - Number of Local Minima: Numerous (it oscillates rapidly)
+        - Number of Global Minima: 1 (in the standard domain)
+        - Convexity: Non-convex
+        - Separability: Separable.
+        - Modality: Multimodal
+        - Symmetry: Symmetric (if all x_i ranges are the same)
+        - Differentiable: Yes. It is smooth and continuous, unlike the Gear function.
         For more information, please visit:
         benchmarkfcns.info/doc/giuntafcn
     )pbdoc");
@@ -443,6 +703,18 @@ PYBIND11_MODULE(_core, m) {
         function at point X. `goldsteinprice` accepts a matrix of size M-by-2
         and returns a vetor SCORES of size M-by-1 in which each row contains the
         function value for the corresponding row of X.
+        Properties:
+        - Global minimum: 3
+        - Location of global minimum: (0, -1)
+        - Number of dimensions: 2
+        - Recommended domain: [-2, 2]^2
+        - Number of local minima: 4
+        - Number of global minima: 1
+        - Convexity: Non-convex
+        - Separability: Non-separable
+        - Modality: Multimodal
+        - Symmetry: Non-symmetric
+        - Differentiable: Yes
         For more information, please visit:
         benchmarkfcns.info/doc/goldsteinpricefcn
     )pbdoc");
@@ -477,6 +749,50 @@ PYBIND11_MODULE(_core, m) {
         the function.
         For more information, please visit:
         benchmarkfcns.info/doc/happycatfcn
+    )pbdoc");
+
+    m.def("hartmann3", &hartmann3, R"pbdoc(
+        Computes the value of the Hartmann N. 3 benchmark function.
+        SCORES = hartmann3(X) computes the value of the Hartmann N. 3
+        function at point X. `hartmann3` accepts a matrix of size M-by-3 and
+        returns a vetor SCORES of size M-by-1 in which each row contains the
+        function value for the corresponding row of X.
+        Properties:
+        - Global minimum: \approx -3.86278
+        - Location of global minimum: \approx (0.114614, 0.555649, 0.852547)
+        - Number of dimensions: 3
+        - Recommended domain: [0, 1]^3
+        - Number of local minima: 4
+        - Number of global minima: 1
+        - Convexity: Non-convex
+        - Separability: Non-separable
+        - Modality: Multimodal
+        - Symmetry: Non-symmetric
+        - Differentiable: Yes
+        For more information, please visit:
+        benchmarkfcns.info/doc/hartmann3fcn
+    )pbdoc");
+
+    m.def("hartmann6", &hartmann6, R"pbdoc(
+        Computes the value of the Hartmann N. 6 benchmark function.
+        SCORES = hartmann6(X) computes the value of the Hartmann N. 6
+        function at point X. `hartmann6` accepts a matrix of size M-by-6 and
+        returns a vetor SCORES of size M-by-1 in which each row contains the
+        function value for the corresponding row of X.
+        Properties:
+        - Global minimum: \approx -3.32237
+        - Location of global minimum: \approx (0.20169, 0.150011, 0.476874, 0.275332, 0.311652, 0.6573)
+        - Number of dimensions: 6
+        - Recommended domain: [0, 1]^6
+        - Number of local minima: 6
+        - Number of global minima: 1
+        - Convexity: Non-convex
+        - Separability: Non-separable
+        - Modality: Multimodal
+        - Symmetry: Non-symmetric
+        - Differentiable: Yes
+        For more information, please visit:
+        benchmarkfcns.info/doc/hartmann6fcn
     )pbdoc");
 
     m.def("himmelblau", &himmelblau, R"pbdoc(
@@ -785,6 +1101,17 @@ PYBIND11_MODULE(_core, m) {
         point X. `sphere` accepts a matrix of size M-by-N and returns a vetor
         SCORES of size M-by-1 in which each row contains the function value for
         each row of X.
+        Properties:
+        - Global minimum: 0
+        - Location of global minimum: 0
+        - Number of dimensions: n
+        - Domain: [-5.12, 5.12]^n
+        - Number of local minima: 0
+        - Number of global minima: 1
+        - Convexity: convex
+        - Separability: separable
+        - Modality: unimodal
+        - Symmetry: symmetric
         For more information, please visit:
         benchmarkfcns.info/doc/spherefcn
     )pbdoc");
@@ -868,6 +1195,42 @@ PYBIND11_MODULE(_core, m) {
         function at point X. `wayburnseadern2` accepts a matrix of size M-by-2 and
         returns a vetor SCORES of size M-by-1 in which each row contains the
         function value for the corresponding row of X.
+    )pbdoc");
+
+    m.def("weierstrass", &weierstrass, py::arg("x"), py::arg("a") = 0.5, py::arg("b") = 3.0, py::arg("kmax") = 20, R"pbdoc(
+        Computes the value of the Weierstrass benchmark function.
+        Properties:
+            - Global minimum: 0
+            - Location of global minimum: 0
+            - Number of dimensions: n
+            - Domain: [-0.5, 0.5]^n
+            - Number of global minima: 1
+            - Convexity: non-convex
+            - Separability: separable
+            - Modality: multi-modal
+            - Symmetry: The function is symmetric with respect to its input dimensions. The
+            outer summation treats each dimension of x independently and identically, so
+            permuting the elements of the input vector x (e.g., swapping x1 and x2) will
+            not change the output of the function.
+
+        Inputs:
+            x: A matrix where each row is a vector of dimension n.
+            a: A scalar parameter that controls the amplitude of the cosine waves. For the
+                function to be nowhere differentiable, this parameter must satisfy the
+                condition 0<a<1.
+            b: A scalar parameter that controls the frequency of the cosine waves. For the
+                function to be nowhere differentiable, this parameter must be a positive
+                odd integer. The original condition for non-differentiability is that
+                ab>1.
+            kmax: An integer that defines the number of terms in the summation. In the
+                original, theoretical Weierstrass function, this summation goes to
+                infinity. In practical, computable versions like this one, it is truncated
+                at a finite value, kmax. A larger kmax makes the function more "crinkly"
+                and complex.
+        Outputs:
+            scores: A column vector where each element is the function value at the
+                corresponding row of x.
+
     )pbdoc");
 
     m.def("wolfe", &wolfe, R"pbdoc(
